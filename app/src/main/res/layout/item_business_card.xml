@@ -13,7 +13,7 @@
         android:clickable="true"
         android:focusable="true"
         app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
+        app:cardElevation="15dp"
         android:layout_margin="16dp"
         app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,15 +24,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp">
+            android:layout_marginStart="16dp">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/black"
                 tools:text="Renan Alves"/>
 
             <com.google.android.material.textview.MaterialTextView
@@ -53,13 +55,29 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_phone"
                 tools:text="Email"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_company"
+            <LinearLayout
+                android:id="@+id/ll_content_color"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:text="Nome Empresa"/>
+                app:layout_constraintTop_toTopOf="parent">
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_margin="16dp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:text="Nome Empresa"/>
+            </LinearLayout>
+
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
