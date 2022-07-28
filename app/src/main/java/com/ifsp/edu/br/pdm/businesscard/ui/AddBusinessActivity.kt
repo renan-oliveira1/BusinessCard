@@ -10,7 +10,8 @@ import com.ifsp.edu.br.pdm.businesscard.data.BusinessCard
 import com.ifsp.edu.br.pdm.businesscard.databinding.ActivityAddBusinessBinding
 
 class AddBusinessActivity : AppCompatActivity() {
-    private val binding by lazy {ActivityAddBusinessBinding.inflate(layoutInflater)}
+
+    private val binding by lazy { ActivityAddBusinessBinding.inflate(layoutInflater) }
     private val mainViewModel: MainViewModel by viewModels{
         MainViewModelFactory((application as App).repository)
     }
@@ -34,9 +35,20 @@ class AddBusinessActivity : AppCompatActivity() {
                 email = binding.tilEmail.editText?.text.toString(),
                 backgroundInfo = binding.tilColor.editText?.text.toString(),
             )
-            mainViewModel.insert(businessCard)
-            Toast.makeText(this, R.string.label_show_sucess, Toast.LENGTH_SHORT).show()
-            finish()
+            if(!verifyDatasInputs()){
+                mainViewModel.insert(businessCard)
+                Toast.makeText(this, R.string.label_show_sucess, Toast.LENGTH_SHORT).show()
+                finish()
+            }else{
+                Toast.makeText(this, R.string.label_show_error, Toast.LENGTH_SHORT).show()
+            }
+
         }
+    }
+
+    private fun verifyDatasInputs(): Boolean {
+         return binding.tilName.editText?.text.toString().isBlank() || binding.tilCompany.editText?.text.toString().isBlank()
+                 || binding.tilEmail.editText?.text.toString().isBlank() || binding.tilColor.editText?.text.toString().isBlank()
+                 || binding.tilPhone.editText?.text.toString().isBlank()
     }
 }
